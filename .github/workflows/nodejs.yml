@@ -25,5 +25,10 @@ jobs:
       with:
         commit_message: "commit to repo"
         author_name: last-hit-aab
+    - name: github push 
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
       env:
         CI: true
