@@ -21,6 +21,9 @@ exports.onPostBuild = function () {
 	// fs.mkdirSync(path.join(__dirname, 'docs'));
 
 	fs.renameSync(path.join(__dirname, 'public'), path.join(__dirname, 'docs'));
+
+
+	// fs.createReadStream('./CNAME').pipe(fs.createWriteStream('./docs/CNAME'));
 };
 
 

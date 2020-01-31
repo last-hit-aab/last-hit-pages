@@ -14,6 +14,13 @@ module.exports = {
 				path: `${__dirname}/src/images`,
 			},
 		},
+		{
+			resolve: 'gatsby-plugin-copy',
+			options: {
+				verbose: true,// outputs a message for each file copied
+				'CNAME': 'public/CNAME', // Add one entry per file to copy
+			},
+		},
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-sharp`,
 		{

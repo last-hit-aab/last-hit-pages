@@ -14,8 +14,12 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:60:26)
+  SyntaxError: /Users/yifeng/Documents/last-hit-e/last-hit-pages/package.json: Unexpected token / in JSON at position 236
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:304:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:315:13
 
 npm manifest: 
   {
@@ -26,6 +30,8 @@ npm manifest:
   	"dependencies": {
   		"gatsby": "^2.18.12",
   		"gatsby-image": "^2.2.34",
+  		"gatsby-plugin-advanced-sitemap": "^1.4.5",
+  		// "gatsby-plugin-copy-files": "^1.0.3",
   		"gatsby-plugin-manifest": "^2.2.31",
   		"gatsby-plugin-offline": "^3.0.27",
   		"gatsby-plugin-react-helmet": "^3.1.16",
@@ -40,7 +46,8 @@ npm manifest:
   		"prop-types": "^15.7.2",
   		"react": "^16.12.0",
   		"react-dom": "^16.12.0",
-  		"react-helmet": "^5.2.1"
+  		"react-helmet": "^5.2.1",
+  		"rimraf": "^3.0.1"
   	},
   	"devDependencies": {
   		"gh-pages": "^2.1.1",
@@ -824,6 +831,13 @@ Lockfile:
     integrity sha512-NrRUehqG0sMSCaP+0XV/vOvvjNl4BQOWq3Qys1Q2KTEm5tGMo9h0dHnIzeKerj0a7SIB8LP5kYg/T1raE3FoKQ==
     dependencies:
       core-js-pure "^3.0.0"
+      regenerator-runtime "^0.13.2"
+  
+  "@babel/runtime@7.6.3":
+    version "7.6.3"
+    resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.6.3.tgz?cache=0&sync_timestamp=1578952302747&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.6.3.tgz#935122c74c73d2240cafd32ddb5fc2a6cd35cf1f"
+    integrity sha1-k1Eix0xz0iQMr9Mt21/Cps01zx8=
+    dependencies:
       regenerator-runtime "^0.13.2"
   
   "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4":
@@ -5265,7 +5279,16 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/fs-exists-cached/-/fs-exists-cached-1.0.0.tgz#cf25554ca050dc49ae6656b41de42258989dcbce"
     integrity sha1-zyVVTKBQ3EmuZla0HeQiWJidy84=
   
-  fs-extra@^4.0.2:
+  fs-extra@8.1.0, fs-extra@^8.1.0:
+    version "8.1.0"
+    resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-8.1.0.tgz#49d43c45a88cd9677668cb7be1b46efdb8d2e1c0"
+    integrity sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==
+    dependencies:
+      graceful-fs "^4.2.0"
+      jsonfile "^4.0.0"
+      universalify "^0.1.0"
+  
+  fs-extra@^4.0.0, fs-extra@^4.0.2:
     version "4.0.3"
     resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-4.0.3.tgz#0d852122e5bc5beb453fb028e9c0c9bf36340c94"
     integrity sha512-q6rbdDd1o2mAnQreO7YADIxf/Whx4AHBiRf6d+/cVT8h44ss+lHgxf1FemcqDnQt9X3ct4McHr+JMGlYSsK7Cg==
@@ -5280,15 +5303,6 @@ Lockfile:
     integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
     dependencies:
       graceful-fs "^4.1.2"
-      jsonfile "^4.0.0"
-      universalify "^0.1.0"
-  
-  fs-extra@^8.1.0:
-    version "8.1.0"
-    resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-8.1.0.tgz#49d43c45a88cd9677668cb7be1b46efdb8d2e1c0"
-    integrity sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==
-    dependencies:
-      graceful-fs "^4.2.0"
       jsonfile "^4.0.0"
       universalify "^0.1.0"
   
@@ -5439,6 +5453,24 @@ Lockfile:
       glob "^7.1.6"
       lodash "^4.17.15"
       micromatch "^3.1.10"
+  
+  gatsby-plugin-advanced-sitemap@^1.4.5:
+    version "1.4.5"
+    resolved "https://registry.npm.taobao.org/gatsby-plugin-advanced-sitemap/download/gatsby-plugin-advanced-sitemap-1.4.5.tgz#70ee69ec7ab5d992d5299cb679eefa6e14a1dc23"
+    integrity sha1-cO5p7Hq12ZLVKZy2ee76bhSh3CM=
+    dependencies:
+      "@babel/runtime" "7.6.3"
+      fs-extra "8.1.0"
+      lodash "4.17.15"
+      moment "^2.24.0"
+      xml "^1.0.1"
+  
+  gatsby-plugin-copy-files@^1.0.3:
+    version "1.0.3"
+    resolved "https://registry.npm.taobao.org/gatsby-plugin-copy-files/download/gatsby-plugin-copy-files-1.0.3.tgz#391fb465324c3709a6b433fb2d4990a37f2a7dce"
+    integrity sha1-OR+0ZTJMNwmmtDP7LUmQo38qfc4=
+    dependencies:
+      fs-extra "^4.0.0"
   
   gatsby-plugin-manifest@^2.2.31:
     version "2.2.31"
@@ -7845,7 +7877,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
     integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
   
-  lodash@^4.11.1, lodash@^4.15.0, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0:
+  lodash@4.17.15, lodash@^4.11.1, lodash@^4.15.0, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0:
     version "4.17.15"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
     integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -10785,6 +10817,13 @@ Lockfile:
     dependencies:
       glob "^7.1.3"
   
+  rimraf@^3.0.1:
+    version "3.0.1"
+    resolved "https://registry.npm.taobao.org/rimraf/download/rimraf-3.0.1.tgz?cache=0&sync_timestamp=1580183175628&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frimraf%2Fdownload%2Frimraf-3.0.1.tgz#48d3d4cb46c80d388ab26cd61b1b466ae9ae225a"
+    integrity sha1-SNPUy0bIDTiKsmzWGxtGaumuIlo=
+    dependencies:
+      glob "^7.1.3"
+  
   ripemd160@^2.0.0, ripemd160@^2.0.1:
     version "2.0.2"
     resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-2.0.2.tgz#a1c1a6f624751577ba5d07914cbc92850585890c"
@@ -13153,6 +13192,11 @@ Lockfile:
       sax ">=0.6.0"
       util.promisify "~1.0.0"
       xmlbuilder "~11.0.0"
+  
+  xml@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.npm.taobao.org/xml/download/xml-1.0.1.tgz#78ba72020029c5bc87b8a81a3cfcd74b4a2fc1e5"
+    integrity sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=
   
   xmlbuilder@~11.0.0:
     version "11.0.1"
