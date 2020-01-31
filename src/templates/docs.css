@@ -1,0 +1,187 @@
+.doc-container {
+	display: flex;
+}
+
+.doc-container > .doc-content {
+	width: 70%;
+	padding-right: 20px;
+	font-size: 16px;
+	color: #3e3e3e;
+}
+
+.doc-container > .doc-content p.sub-title {
+	font-size: 24px;
+	opacity: .7;
+	font-weight: 300;
+	line-height: 1.8;
+}
+
+.doc-container > .doc-content > h1 {
+	margin-top: 40px;
+	font-size: 60px;
+	line-height: 65px;
+	font-weight: 700;
+}
+
+.doc-container > .doc-content blockquote {
+	background-color: rgba(255,229,100,0.3);
+	border-left-color: #ffe564;
+	border-left-width: 9px;
+	border-left-style: solid;
+	padding: 20px 45px 20px 26px;
+	margin: 20px 0 30px;
+}
+
+.doc-container > .doc-content pre[class*="language-bash"] code[class*="language-"],
+.doc-container > .doc-content pre[class="language-text"] code[class*="language-"] {
+	white-space: pre-wrap;
+}
+
+.doc-container > .doc-content pre:not[class="language-text"] code[class*="language-"] {
+	white-space: nowrap;
+}
+
+.doc-container > .doc-content *:not(pre) > code[class*="language-"] {
+	font-size: 13px;
+}
+
+.doc-container > .doc-content *:not(pre) > code[class*="language-"]:after,
+.doc-container > .doc-content *:not(pre) > code[class*="language-"]:before {
+	padding-left: .5em;
+	content: '';
+}
+
+.doc-container > .doc-content .language-table {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-row-gap: 10px;
+	grid-column-gap: 10px;
+}
+
+.doc-container > .doc-content .language-table > div {
+	display: flex;
+	flex-direction: column;
+}
+
+.doc-container > .doc-content .language-table > div > a:nth-child(2) {
+	font-size: 22px;
+	font-weight: bold;
+	margin-bottom: 8px;
+	margin-top: 8px;
+	color: #1a1a1a;
+}
+
+.doc-container > .doc-content .language-table > div > a:last-child {
+	font-size: 12px;
+	margin-bottom: 8px;
+	color: #1a1a1a;
+}
+
+.doc-container > .doc-content .doc-page-links {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding-top: 40px;
+}
+
+.doc-container > .doc-content .doc-page-links > div:last-child {
+	text-align: right;
+}
+
+.doc-container > .doc-content .doc-page-links > div > a {
+	font-weight: 500;
+	opacity: .7;
+	color: #1a1a1a;
+}
+
+.doc-container > .doc-content > .doc-footer {
+	margin-top: 40px;
+	font-weight: 500;
+	opacity: .7;
+}
+
+.doc-container > .doc-toc {
+	padding: 80px 20px 40px 40px;
+	background: #f7f7f7;
+	position: fixed;
+	height: calc(100vh - 60px);
+	overflow: auto;
+	font-size: 14px;
+	top: 60px;
+	left: 70%;
+	border-left: 1px solid #ececec;
+}
+
+.doc-container > .doc-toc > ul {
+	/* padding-left: 16px; */
+	margin-left: 0;
+}
+
+.doc-container > .doc-toc ul {
+	list-style-type: none;
+	list-style-position: inside;
+	margin-bottom: 0;
+}
+
+.doc-container > .doc-toc ul p {
+	vertical-align: top;
+	display: inline-block;
+}
+
+.doc-container > .doc-toc li {
+	margin-bottom: 0;
+}
+
+.doc-container > .doc-toc li > p {
+	margin-bottom: 0;
+}
+
+.doc-container > .doc-toc li > ul {
+	margin-top: 0;
+	margin-left: 10px;
+}
+
+.doc-container > .doc-toc a {
+	color: #1a1a1a;
+	text-decoration: none;
+}
+
+.doc-container > .doc-toc a:hover {
+	text-decoration: underline;
+}
+@media (max-width: 599px) {
+	.doc-container > .doc-content {
+		width: 100%;
+		padding-right: 0;
+	}
+
+	.doc-container > .doc-toc {
+		display: none;
+	}
+}
+@media (min-width: 600px) {
+	.doc-container > .doc-toc {
+		position: fixed;
+		z-index: 2;
+		height: calc(100vh - 60px);
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		margin-right: -999px;
+		padding-right: 999px;
+		background-color: #f7f7f7;
+		opacity: 1 !important;
+	}
+}
+@media (max-width: 1999px) and (min-width: 780px) {
+	.doc-container > .doc-toc {
+		position: fixed;
+		z-index: 2;
+		height: 100%;
+	}
+}
+@media (min-width: 780px) {
+	.doc-container > .doc-toc {
+		margin-right: -999px;
+		padding-right: 999px;
+		background-color: #f7f7f7;
+	}
+}
