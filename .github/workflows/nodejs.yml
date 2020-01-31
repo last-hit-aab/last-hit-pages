@@ -20,5 +20,10 @@ jobs:
     - run: yarn
     - run: yarn clean
     - run: yarn build
+    - name: Commit docs file 
+      uses: zwaldowski/git-commit-action@v1
+      with:
+        commit_message: "commit to repo"
+        author_name: last-hit-aab
       env:
         CI: true
