@@ -27,7 +27,7 @@ jobs:
     - name: github push 
       uses: ad-m/github-push-action@v0.5.0
       with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT_TOKEN }}
           force: true
       env:
         CI: true
