@@ -32,7 +32,7 @@ And let test team focus on design and build more e2e scenarios, increase case co
 
 ## Approach
 With the aid of Last-Hit, we introduce [our approaches](/thinking-in-last-hit/) to you, which let us improve our automation testing works.  
-In the other hand, we believe there's no silver bullet, different approaches will be found on different situations, for different indudstries and different domains, the most suitable one is the best one. We love hearing from you, to help us and community, just [submit your best practice](https://github.com/last-hit-aab/last-hit-pages-src) to us, and the following section are prepare for you.
+In the other hand, we believe there's no silver bullet, different approaches will be found on different situations, for different indudstries and different domains, the most suitable one is the best one. We love hearing from you, to help us and community, just [submit your best practice](https://github.com/last-hit-aab/last-hit-pages) to us, and the following section are prepare for you.
 
 # Best Practices
-Feel free to [submit and share your best practice](https://github.com/last-hit-aab/last-hit-pages-src).
+Feel free to [submit and share your best practice](https://github.com/last-hit-aab/last-hit-pages).
