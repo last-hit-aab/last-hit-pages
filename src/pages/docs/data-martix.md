@@ -136,3 +136,5 @@ Feel free to [submit and share your best practice](https://github.com/last-hit-a
 
 # License
 Data Matrix is under commerical license. Currently the first canary version is released, feel free to take a trail.
+
+> All rights reserved on recall any version (including canary versions) for free purpose.

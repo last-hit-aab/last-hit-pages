@@ -76,7 +76,7 @@ const Layout = ({ children }) => {
 							<div className="body-footer-block">
 								<header>企业特性</header>
 								<a href="/zh/admin-server/">中央管理服务器</a>
-								<a href="/zh/data-matrix/">数据魔方</a>
+								<a href="/zh/data-matrix/">数据阵列</a>
 							</div>
 							<div className="body-footer-block">
 								<header>开源代码库</header>
