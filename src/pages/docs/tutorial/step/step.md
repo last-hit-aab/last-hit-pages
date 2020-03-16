@@ -54,8 +54,17 @@ There are some properties for all DOM step,
 - `path`: xpath of element
 - `csspath`: CSS path of element
 - `custompath`: Custom path of element
+- `datapath`: The unique path of element by attribute `data-*`.
+    - Default attribute name is `data-lh-key`
+    - Name can be given by set value on `window.$lhDataAttrName`, eg.
+        ```javascript
+        // in your code
+        window.$lhDataAttrName = 'field';
+        ```
+      Then use `data-field`.
+    > Make sure it is unique, even element occurred in a list.
 
-Replayer find an element by `path`, `csspath` and `custompath`, sequentially. For each path, there is one and only one element can be located. `custompath` is manual input, more like a failover by yourself.
+Replayer find an element by `datapath`, `path`, `csspath` and `custompath`, sequentially. For each path, there is one and only one element can be located. `custompath` is manual input, more like a failover by yourself.
 
 ## Properties for Type
 ### Start Step
@@ -72,6 +81,11 @@ Replayer find an element by `path`, `csspath` and `custompath`, sequentially. Fo
 - `forStepUuid`  
 	When step triggers page create, for binding page uuid, replayer will find the page create step forwarding. Normally url comparison is enough, but sometimes, variables are knitted into url path, then url comparison is insufficient. In this scenario, replay will create an unnecessary tab.  
 	For evading this situation, set `forStepUuid` property on page create step, and replayer can detect it, and bind page uuid on the new page correctly.
+
+### Page Create/Switch Step
+- `matcher`
+    An URL regexp for matching page, to decide page should be switched and created.  
+    Page switch and create normally triggered by step, `matcher` is designed to avoid unnecessary url switch or page create.
 
 ### Click Step
 - `value`: Value of input
