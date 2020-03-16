@@ -1,6 +1,6 @@
 ---
 path: "/zh/tutorial/step"
-date: date: 2020-03-18T00:50:19.962Z
+date: 2020-03-18T00:50:19.962Z
 title: "Step"
 author: bradwoo8621
 ---
