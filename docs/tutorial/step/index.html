@@ -97,8 +97,23 @@ Not work on CI</p>
 <li><code class="language-text">path</code>: xpath of element</li>
 <li><code class="language-text">csspath</code>: CSS path of element</li>
 <li><code class="language-text">custompath</code>: Custom path of element</li>
+<li>
+<p><code class="language-text">datapath</code>: The unique path of element by attribute <code class="language-text">data-*</code>.</p>
+<ul>
+<li>Default attribute name is <code class="language-text">data-lh-key</code></li>
+<li>
+<p>Name can be given by set value on <code class="language-text">window.$lhDataAttrName</code>, eg.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// in your code</span>
+window<span class="token punctuation">.</span>$lhDataAttrName <span class="token operator">=</span> <span class="token string">'field'</span><span class="token punctuation">;</span></code></pre></div>
+<p>Then use <code class="language-text">data-field</code>.</p>
+<blockquote>
+<p>Make sure it is unique, even element occurred in a list.</p>
+</blockquote>
+</li>
 </ul>
-<p>Replayer find an element by <code class="language-text">path</code>, <code class="language-text">csspath</code> and <code class="language-text">custompath</code>, sequentially. For each path, there is one and only one element can be located. <code class="language-text">custompath</code> is manual input, more like a failover by yourself.</p>
+</li>
+</ul>
+<p>Replayer find an element by <code class="language-text">datapath</code>, <code class="language-text">path</code>, <code class="language-text">csspath</code> and <code class="language-text">custompath</code>, sequentially. For each path, there is one and only one element can be located. <code class="language-text">custompath</code> is manual input, more like a failover by yourself.</p>
 <h2 id="properties-for-type"><a href="#properties-for-type" aria-label="properties for type permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Properties for Type</h2>
 <h3 id="start-step"><a href="#start-step" aria-label="start step permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Start Step</h3>
 <ul>
@@ -124,6 +139,12 @@ Not work on CI</p>
 <li><code class="language-text">forStepUuid</code><br>
 When step triggers page create, for binding page uuid, replayer will find the page create step forwarding. Normally url comparison is enough, but sometimes, variables are knitted into url path, then url comparison is insufficient. In this scenario, replay will create an unnecessary tab.<br>
 For evading this situation, set <code class="language-text">forStepUuid</code> property on page create step, and replayer can detect it, and bind page uuid on the new page correctly.</li>
+</ul>
+<h3 id="page-createswitch-step"><a href="#page-createswitch-step" aria-label="page createswitch step permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Page Create/Switch Step</h3>
+<ul>
+<li><code class="language-text">matcher</code>
+An URL regexp for matching page, to decide page should be switched and created.<br>
+Page switch and create normally triggered by step, <code class="language-text">matcher</code> is designed to avoid unnecessary url switch or page create.</li>
 </ul>
 <h3 id="click-step"><a href="#click-step" aria-label="click step permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Click Step</h3>
 <ul>
@@ -243,6 +264,7 @@ For evading this situation, set <code class="language-text">forStepUuid</code> p
 <ul>
 <li><a href="/tutorial/step/#start-step">Start Step</a></li>
 <li><a href="/tutorial/step/#page-create-step">Page Create Step</a></li>
+<li><a href="/tutorial/step/#page-createswitch-step">Page Create/Switch Step</a></li>
 <li><a href="/tutorial/step/#click-step">Click Step</a></li>
 <li><a href="/tutorial/step/#change-step">Change Step</a></li>
 <li><a href="/tutorial/step/#animation-step">Animation Step</a></li>
