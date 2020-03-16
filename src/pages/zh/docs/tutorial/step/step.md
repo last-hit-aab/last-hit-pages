@@ -1,6 +1,6 @@
 ---
 path: "/zh/tutorial/step"
-date: 2019-12-23T20:09:19.962Z
+date: date: 2020-03-18T00:50:19.962Z
 title: "Step"
 author: bradwoo8621
 ---
@@ -54,8 +54,17 @@ DOM步骤公共属性如下，
 - `path`: 元素的xpath
 - `csspath`: 元素的CSS path
 - `custompath`: 元素的自定义path
+- `datapath`: 使用`data-*`属性的唯一path
+    - 属性属性名为`data-lh-key`
+    - 属性名可以使用预置变量`window.$lhDataAttrName`进行设置，例如：
+        ```javascript
+        // 在你的代码中
+        window.$lhDataAttrName = 'field';
+        ```
+        现在录制的时候会抓取`data-field`。
+    > 即便节点是在列表中循环产生，也请保证使用本属性查找到节点的唯一性。
 
-回放器按照`path`、`csspath`、`custompath`的顺序查找元素。对于每一个path，必须保证有且仅有一个元素被定位。`custompath`需要手工录入，更像一个您可以防止自动录制path失效的方法。
+回放器按照`datapath`、`path`、`csspath`、`custompath`的顺序查找元素。对于每一个path，必须保证有且仅有一个元素被定位。`custompath`需要手工录入，更像一个您可以防止自动录制path失效的方法。
 
 ## 特定类型的属性
 ### Start Step
@@ -72,6 +81,10 @@ DOM步骤公共属性如下，
 - `forStepUuid`  
 	当Step触发页签创建（可能某个步骤回放时由脚本创建）时，回放器必须找到创建页签Step以便找回页面UUID。通常URL比较已经足够，但某些情况下，参数被放置在URL的path中，最终导致URL比较失效。这种场景下，回放器会额外创建一个无用的页签。  
 	为了规避这种情况，在创建页签步骤中设置`forStepUuid`，这样回放器可以正确找到创建页签Step，并正确设置页面UUID。
+
+### Page Create/Switch Step
+- `matcher`  
+    URL正则匹配，可以决定Page Switch或者Create步骤是否需要被执行。正确设置本属性可以避免创建不正确的页签，或者跳转到不正确的地址。
 
 ### Click Step
 - `value`：输入值，如果有

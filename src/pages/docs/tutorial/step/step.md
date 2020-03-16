@@ -1,6 +1,6 @@
 ---
 path: "/tutorial/step"
-date: 2019-12-19T20:09:19.962Z
+date: 2020-03-18T00:35:19.962Z
 title: "Step"
 author: last-hit-aab
 ---
@@ -83,7 +83,7 @@ Replayer find an element by `datapath`, `path`, `csspath` and `custompath`, sequ
 	For evading this situation, set `forStepUuid` property on page create step, and replayer can detect it, and bind page uuid on the new page correctly.
 
 ### Page Create/Switch Step
-- `matcher`
+- `matcher`  
     An URL regexp for matching page, to decide page should be switched and created.  
     Page switch and create normally triggered by step, `matcher` is designed to avoid unnecessary url switch or page create.
 
