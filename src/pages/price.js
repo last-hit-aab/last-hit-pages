@@ -9,9 +9,8 @@ const Container = styled.div`
 	margin-top: 124px;
 	margin-bottom: 48px;
 	> div:first-child {
-		margin: auto;
 		color: rgba(0,0,0,0.5);
-		margin-bottom: 4px;
+		margin: auto auto 4px;
 		font-size: 16px;
 	}
 	> div:nth-child(2) {
@@ -20,6 +19,12 @@ const Container = styled.div`
 		font-weight: 700;
 		line-height: 48px;
 	}
+	@media (max-width: 599px) {
+		> div:first-child,
+		> div:nth-child(2) {
+			display: none;
+		}
+	}
 `;
 const Plans = styled.div`
 	display: grid;
@@ -27,6 +32,9 @@ const Plans = styled.div`
 	padding-top: 48px;
 	margin: auto;
 	width: 1200px;
+	@media (max-width: 599px) {
+		display: none;
+	}
 	> div[data-role=title] {
 		display: flex;
 		flex-direction: column;
@@ -174,7 +182,117 @@ const Plans = styled.div`
 		}
 	}
 `
-
+const MobilePlans = styled.div`
+	@media (min-width: 600px) {
+		display: none;
+	}
+	margin-left: 16px;
+	margin-right: 16px;
+	> div[data-role=plan] {
+		> div:first-child {
+			font-size: 24px;
+			font-weight: 700;
+			margin-bottom: 16px;
+			text-align: center;
+		}
+		> div:nth-child(2) {
+			font-size: 12px;
+			opacity: 0.5;
+			line-height: 1.2em;
+			text-align: center;
+			white-space: normal;
+		}
+		> div:nth-child(3) {
+			margin-top: 16px;
+			display: grid;
+			grid-template-columns: 80% 20%;
+			border: 2px solid #2B95D6;
+			border-radius: 6px;
+			> div {
+				padding: 8px 16px;
+				border-bottom: 1px solid #2B95D6;
+				&:last-child {
+					border-bottom: 0;
+				}
+			}
+			> div:nth-child(2n) {
+				text-align: center;
+				align-self: stretch;
+				border-left: 1px solid #2B95D6;
+				&[data-role=feature-checked] {
+					> svg {
+						width: 15px;
+						color: #2B95D6;
+						margin-top: 3px;
+						margin-bottom: -3px;
+					}
+				}
+				&[data-role=feature-unchecked] {
+					> svg {
+						width: 13px;
+						color: #FF7373;
+						margin-top: 4px;
+						margin-bottom: -4px;
+					}
+				}
+			}
+			> div[data-role=price-free] {
+				grid-column: 1 / span 2;
+				font-size: 14px;
+				font-weight: 600;
+				text-align: center;
+				padding: 8px 16px;
+				> span {
+					opacity: 0.7;
+					> a {
+						color: #106BA3;
+					}
+				}
+			}
+			> div[data-role=price-month] {
+				grid-column: 1 / span 2;
+				font-size: 14px;
+				font-weight: 600;
+				text-align: center;
+				padding: 8px 16px;
+				> span {
+					opacity: 0.7;
+					> span:first-child {
+						font-style: italic;
+						color: #106BA3;
+					}
+					> span:nth-child(2) {
+						font-size: 20px;
+						margin-right: 4px;
+						font-style: italic;
+						color: #106BA3;
+					}
+					> span:nth-child(4) {
+						font-size: 12px;
+						opacity: 0.5;
+						display: block;
+						line-height: 1.2em;
+					}
+				}
+			}
+			> div[data-role=price-sales] {
+				grid-column: 1 / span 2;
+				font-size: 14px;
+				font-weight: 600;
+				text-align: center;
+				padding: 8px 16px;
+				> span {
+					opacity: 0.7;
+					> a {
+						color: #106BA3;
+						text-underline: none;
+					}
+				}
+			}
+		}
+		margin-bottom: 30px;
+	}
+`;
 const plans = [
 	{
 		title: 'Free', description: 'Last-Hit individual for every tester', ide: true, replayer: true, ext: true,
@@ -270,9 +388,64 @@ export default () => {
 					<span><span>$</span><span>499</span><span>/ month</span><span>available for 1 - 20 members</span></span>
 				</div>
 				<div data-role={"price-sales"}>
-					<span><a href={"mailto:last.hit.aab@yandex.com"}>Contact Me</a></span>
+					<span><a href={"mailto:last.hit.aab@yandex.com"}>Contact Us</a></span>
 				</div>
 			</Plans>
+			<MobilePlans>
+				{plans.map((plan, planIndex) => {
+					return <div data-role={"plan"} key={plan.title}>
+						<div>{plan.title}</div>
+						<div>{plan.description}</div>
+						<div>
+							{features.map(feature => {
+								return <React.Fragment key={feature.key}>
+									<div>{feature.description}</div>
+									{plan[feature.key] ?
+										<div data-role={"feature-checked"}>
+											<svg aria-hidden="true" focusable="false" data-prefix="fas"
+											     data-icon="check"
+											     role="img"
+											     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+											     className="svg-inline--fa fa-check fa-w-16 fa-2x">
+												<path fill="currentColor"
+												      d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+												      className=""/>
+											</svg>
+										</div> :
+										<div data-role={"feature-unchecked"}>
+											<svg aria-hidden="true" focusable="false" data-prefix="fas"
+											     data-icon="times"
+											     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"
+											     className="svg-inline--fa fa-times fa-w-11 fa-3x">
+												<path fill="currentColor"
+												      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+												      className=""/>
+											</svg>
+										</div>}
+								</React.Fragment>
+							})}
+							{planIndex === 0 ?
+								<div data-role={"price-free"}>
+								<span>Go, find on <a href={"https://www.npmjs.com/search?q=last-hit"} target={"_blank"}
+								                     rel="noopener noreferrer">NPM</a></span>
+								</div> : null}
+							{planIndex === 1 ?
+								<div data-role={"price-month"}>
+									<span><span>$</span><span>99</span><span>/ month</span><span>available for single project</span></span>
+								</div> : null}
+							{planIndex === 2 ?
+								<div data-role={"price-month"}>
+									<span><span>$</span><span>499</span><span>/ month</span><span>available for 1 - 20 members</span></span>
+								</div> : null}
+							{planIndex === 3 ?
+								<div data-role={"price-sales"}>
+									<span><a href={"mailto:last.hit.aab@yandex.com"}>Contact Us</a></span>
+								</div> : null}
+
+						</div>
+					</div>
+				})}
+			</MobilePlans>
 		</Container>
 	</Layout>
 }

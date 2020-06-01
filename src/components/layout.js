@@ -92,6 +92,12 @@ const Layout = ({ children }) => {
 									Demo Repo
 								</a>
 							</div>
+							<div className="body-footer-block">
+								<header>Commercial</header>
+								<a href="/price/">
+									Commercial Plans
+								</a>
+							</div>
 						</div>
 					</div>
 				</footer>
