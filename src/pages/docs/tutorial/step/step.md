@@ -1,6 +1,6 @@
 ---
 path: "/tutorial/step"
-date: 2020-03-18T00:35:19.962Z
+date: 2020-06-05T23:35:19.962Z
 title: "Step"
 author: last-hit-aab
 ---
@@ -63,6 +63,8 @@ There are some properties for all DOM step,
         ```
       Then use `data-field`.
     > Make sure it is unique, even element occurred in a list.
+    
+    > `$lhDataAttrName` can be set in left bar on IDE, open workspace settings.                                                                                                                                                                                                                                                                                                                   
 
 Replayer find an element by `datapath`, `path`, `csspath` and `custompath`, sequentially. For each path, there is one and only one element can be located. `custompath` is manual input, more like a failover by yourself.
 

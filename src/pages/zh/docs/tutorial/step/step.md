@@ -1,6 +1,6 @@
 ---
 path: "/zh/tutorial/step"
-date: 2020-03-18T00:50:19.962Z
+date: 2020-06-06T00:50:19.962Z
 title: "Step"
 author: bradwoo8621
 ---
@@ -63,6 +63,8 @@ DOM步骤公共属性如下，
         ```
         现在录制的时候会抓取`data-field`。
     > 即便节点是在列表中循环产生，也请保证使用本属性查找到节点的唯一性。
+    
+    > `$lhDataAttrName`可以在IDE中进行设置，在左方工具栏中打开工作空间设置即可。                                                                                                                                                                                                                                                                                                                  
 
 回放器按照`datapath`、`path`、`csspath`、`custompath`的顺序查找元素。对于每一个path，必须保证有且仅有一个元素被定位。`custompath`需要手工录入，更像一个您可以防止自动录制path失效的方法。
 
